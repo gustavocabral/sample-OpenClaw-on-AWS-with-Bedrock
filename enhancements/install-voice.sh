@@ -98,23 +98,24 @@ if ! command -v openclaw &> /dev/null; then
     echo "⚠️  Warning: openclaw command not found. Skipping configuration."
     echo "   Please configure Edge TTS manually after installation."
 else
-    # Apply Edge TTS configuration
-    openclaw gateway config.patch << 'CONFIG_EOF'
-{
-  "messages": {
-    "tts": {
-      "auto": "always",
-      "provider": "edge",
-      "edge": {
-        "enabled": true,
-        "voice": "en-US-MichelleNeural",
-        "lang": "en-US",
-        "outputFormat": "audio-24khz-48kbitrate-mono-opus"
-      }
-    }
-  }
-}
-CONFIG_EOF
+    # Apply Edge TTS configuration using openclaw config set
+    echo "   Setting messages.tts.auto..."
+    openclaw config set messages.tts.auto "always"
+    
+    echo "   Setting messages.tts.provider..."
+    openclaw config set messages.tts.provider "edge"
+    
+    echo "   Setting messages.tts.edge.enabled..."
+    openclaw config set messages.tts.edge.enabled true
+    
+    echo "   Setting messages.tts.edge.voice..."
+    openclaw config set messages.tts.edge.voice "en-US-MichelleNeural"
+    
+    echo "   Setting messages.tts.edge.lang..."
+    openclaw config set messages.tts.edge.lang "en-US"
+    
+    echo "   Setting messages.tts.edge.outputFormat..."
+    openclaw config set messages.tts.edge.outputFormat "audio-24khz-48kbitrate-mono-opus"
 
     echo "✅ OpenClaw configured"
     echo ""

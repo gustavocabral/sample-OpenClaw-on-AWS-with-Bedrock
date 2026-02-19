@@ -68,19 +68,15 @@ if ! command -v openclaw &> /dev/null; then
     echo "⚠️  Warning: openclaw command not found. Skipping configuration."
     echo "   Please configure browser manually after installation."
 else
-    # Apply browser configuration
-    openclaw gateway config.patch << 'CONFIG_EOF'
-{
-  "browser": {
-    "executablePath": "/home/ubuntu/.cache/ms-playwright/chromium-1208/chrome-linux/chrome",
-    "headless": true,
-    "noSandbox": true
-  },
-  "commands": {
-    "restart": true
-  }
-}
-CONFIG_EOF
+    # Apply browser configuration using openclaw config set
+    echo "   Setting browser.executablePath..."
+    openclaw config set browser.executablePath "$CHROMIUM_PATH"
+    
+    echo "   Setting browser.headless..."
+    openclaw config set browser.headless true
+    
+    echo "   Setting browser.noSandbox..."
+    openclaw config set browser.noSandbox true
 
     echo "✅ OpenClaw configured"
     echo ""

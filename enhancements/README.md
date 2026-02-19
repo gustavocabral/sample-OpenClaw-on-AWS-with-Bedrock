@@ -125,12 +125,8 @@ openclaw config get | grep tts
 **Audio file instead of voice note:**
 Check that `outputFormat` is set to Opus (not MP3).
 
-**Poor transcription quality:**
-Consider upgrading to a larger Whisper model:
-```bash
-cd ~/.openclaw/tools/whisper.cpp
-bash ./models/download-ggml-model.sh small.en
-```
+**Transcription errors or garbled text:**
+The base OpenClaw uses sherpa-onnx which has lower accuracy. Install this voice enhancement to get Whisper.cpp, which provides much better transcription quality (especially for technical terms, names, and accents).
 
 ### Browser Automation Issues
 

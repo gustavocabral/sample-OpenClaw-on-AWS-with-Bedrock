@@ -578,6 +578,59 @@ Resources:
           chmod +x /home/ubuntu/ssm-portforward.sh
           chown ubuntu:ubuntu /home/ubuntu/ssm-portforward.sh
           
+          # Create enhancements documentation
+          sudo -u ubuntu mkdir -p /home/ubuntu/.openclaw/workspace
+          sudo -u ubuntu cat > /home/ubuntu/.openclaw/workspace/ENHANCEMENTS.md << 'ENHEOF'
+          # Available OpenClaw Enhancements
+          
+          Your OpenClaw deployment can be enhanced with optional features.
+          Ask your assistant to install them via chat!
+          
+          ## Voice Support for Telegram
+          
+          **Install command:** "Install voice support" or "Set up voice transcription"
+          
+          **What it does:**
+          - Adds Whisper.cpp for accurate voice transcription (~95% accuracy vs 70% base)
+          - Configures Edge TTS for proper Telegram voice notes with waveforms
+          - Fixes transcription errors with technical terms, names, accents
+          - Takes 10-15 minutes, fully automated, $0 cost
+          
+          **Repository:** https://github.com/aws-samples/sample-OpenClaw-on-AWS-with-Bedrock
+          **Script:** enhancements/install-voice.sh
+          
+          ## Browser Automation
+          
+          **Install command:** "Install browser automation" or "Set up browser"
+          
+          **What it does:**
+          - Adds Playwright Chromium for web scraping and screenshots
+          - Enables taking screenshots, extracting data, filling forms
+          - Opens up web interaction capabilities
+          - Takes 5-10 minutes, fully automated, $0 cost
+          
+          **Repository:** https://github.com/aws-samples/sample-OpenClaw-on-AWS-with-Bedrock
+          **Script:** enhancements/install-browser.sh
+          
+          ## How to Install
+          
+          Simply ask your assistant:
+          - "Install voice support"
+          - "Install browser automation"
+          
+          The assistant will fetch and run the installation scripts automatically.
+          
+          ## More Information
+          
+          See the enhancements folder in the GitHub repository for:
+          - Detailed documentation
+          - Benchmark comparisons
+          - Troubleshooting guides
+          - Technical details
+          
+          https://github.com/aws-samples/sample-OpenClaw-on-AWS-with-Bedrock/tree/main/enhancements
+          ENHEOF
+          
           # 完成
           echo "[9/9] Complete!"
           echo "SUCCESS" > /home/ubuntu/.openclaw/setup_status.txt

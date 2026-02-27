@@ -389,7 +389,17 @@ Cost: ~$0.01/request | Time: 2-5s | Security: Private network
 - **EC2 Instance**: Runs openclaw gateway (~500MB-1GB RAM)
 - **IAM Role**: Authenticates with Bedrock (no API keys)
 - **SSM Session Manager**: Secure access without public ports
+- **SSM Associations**: Automated instance initialization (7 steps)
 - **VPC Endpoints**: Private network access to Bedrock
+
+**Init Steps** (via SSM Associations):
+1. System update
+2. AWS CLI installation
+3. Docker + Node.js (parallel)
+4. OpenClaw installation
+5. Configuration
+6. Enable messaging channels
+7. Start service & signal completion
 
 ## Cost Breakdown
 
